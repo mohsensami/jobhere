@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'jobhere';
+    src: url('../fonts/vazir/IRANSans_fa.eot');
+    src: url('../fonts/vazir/IRANSans_fa.eot#iefix') format('embedded-opentype'),
+    url('../fonts/vazir/IRANSans_fa.woff') format('woff'),
+    url('../fonts/vazir/IRANSans_fa.ttf') format('truetype'),
+    url('../fonts/vazir/IRANSans_fa.woff2') format('woff2'),
+    url('../fonts/vazir/IRANSans_fa.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'jobhere';
+    src: url('../fonts/vazir/IRANSans_fa_Bold.eot');
+    src: url('../fonts/vazir/IRANSans_fa_Bold.eot#iefix') format('embedded-opentype'),
+    url('../fonts/vazir/IRANSans_fa_Bold.woff') format('woff'),
+    url('../fonts/vazir/IRANSans_fa_Bold.ttf') format('truetype'),
+    url('../fonts/vazir/IRANSans_fa_Bold.svg') format('svg'),
+    url('../fonts/vazir/IRANSans_fa_Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body, button {
+    direction: rtl;
+    text-align: right;
+    font-size: 13px;
+    font-family: jobhere;
+}
+a:hover {
+    text-decoration: none;
+}
+ul {
+    padding: 0;
+}
+h1 {
+    font-size: 18px;
+    margin: 0;
+}
