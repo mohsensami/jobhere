@@ -19,11 +19,18 @@ Route::get('/' , function () {
    return 'Home';
 });
 
-Route::get('/dashboard', function() {
-    return view('panel.index');
-})->name('panel.dashboard');
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', function() {
+        return view('panel.index');
+    })->name('panel.dashboard');
+});
+
+
 
 Route::get('/profile', [UserController::class, 'index'])->name('panel.profile');
 Route::put('/profile', [UserController::class, 'update'])->name('profile.update');
 
 Route::get('/employers', [EmployerController::class, 'index'])->name('panel.employers');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

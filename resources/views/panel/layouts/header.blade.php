@@ -4,10 +4,14 @@
         <a class="header__logo" href="#"></a>
     </div>
     <div class="header__left d-flex flex-end item-center margin-top-2">
-        <a href="" class="logout" title="خروج"></a>
+        <a onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="{{ route('logout') }}" class="logout" title="خروج"></a>
+        <form style="display: none;" id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+
+        </form>
     </div>
 </div>
-<div class="breadcrumb">
+<div class="jobhere-breadcrumb">
     <ul>
         <li><a href="index.blade.php" title="پیشخوان">پیشخوان</a></li>
     </ul>

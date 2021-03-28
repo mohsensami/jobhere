@@ -1,4 +1,4 @@
-@extends('panel.layouts.panel')
+@extends('panel.layouts.master')
 
 @section('content')
     @include('panel.layouts.header')

@@ -10,6 +10,6 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('panel.users.index', ['user'=>User::find(1)->first()]);
+        return view('panel.profile');
     }
 }

@@ -1,5 +1,5 @@
 
-@extends('panel.layouts.panel')
+@extends('panel.layouts.master')
 
 @section('content')
 @include('panel.layouts.header')
@@ -14,23 +14,23 @@
                 <div class="v-dialog__container" style="display: block;"></div>
                 <div class="box__camera default__avatar"></div>
             </div>
-            <span class="profile__name">کاربر : {{ $user->name }}</span>
+            <span class="profile__name">کاربر : {{ Auth::user()->full_name }}</span>
             
             @error('profile')
               <p class="error">{{ $message }}</p>
             @enderror
         </div>
-        <input class="text" type="text" name="name" placeholder="نام کاربری" value="{{ $user->name }}">
+        <input class="text" type="text" name="name" placeholder="نام کاربری" value="{{ Auth::user()->full_name }}">
         @error('name')
           <p class="error">{{ $message }}</p>
         @enderror
 
-        <input class="text" type="text" name="mobile" placeholder="شماره تلفن" value="{{ $user->mobile }}">
+        <input class="text" type="text" name="mobile" placeholder="شماره تلفن" value="{{ Auth::user()->phone }}">
         @error('mobile')
           <p class="error">{{ $message }}</p>
         @enderror
 
-        <input class="text text-left" type="email" name="email" placeholder="ایمیل" value="{{ $user->email }}">
+        <input class="text text-left" type="email" name="email" placeholder="ایمیل" value="{{ Auth::user()->email }}">
         @error('email')
           <p class="error">{{ $message }}</p>
         @enderror

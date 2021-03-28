@@ -6,7 +6,7 @@
         <div class="v-dialog__container" style="display: block;"></div>
         <div class="box__camera default__avatar"></div>
     </div>
-    <span class="profile__name">نام شرکت</span>
+    <span class="profile__name"></span>
 </div>
 
 <ul>
