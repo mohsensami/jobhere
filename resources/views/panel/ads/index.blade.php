@@ -5,8 +5,8 @@
     <div class="main-content font-size-13">
         <div class="tab__box">
             <div class="tab__items">
-                <a class="tab__item is-active" href="#">همه کاربران</a>
-                <a class="tab__item" href="#">ایجاد کاربر جدید</a>
+                <a class="tab__item {{ Request::is('panel/ads') ? 'is-active' : '' }}" href="{{ route('ads.index') }}">همه آگهی ها</a>
+                <a class="tab__item {{ Request::is('panel/ads/create') ? 'is-active' : '' }}" href="{{ route('ads.create') }}">+ آگهی جدید</a>
             </div>
         </div>
         <div class="d-flex flex-space-between item-center flex-wrap padding-30 border-radius-3 bg-white">
@@ -15,28 +15,22 @@
             <table class="table">
                 <thead role="rowgroup">
                 <tr role="row" class="title-row">
-                    <th>شناسه</th>
-                    <th>نام و نام خانوادگی</th>
-                    <th>ایمیل</th>
-                    <th>موبایل</th>
+                    <th>عنوان آگهی</th>
                     <th>عملیات</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($employers as $employer)
+                @foreach($ads as $ad)
                     <tr role="row" class="">
-                        <td>{{ $employer->id }}</td>
-                        <td>{{ $employer->company_name }}</td>
-                        <td>{{ $employer->user->email }}</td>
-                        <td>{{ $employer->user->phone }}</td>
+                        <td>{{ $ad->title }}</td>
 {{--                        <td>{{ $user->getRoleInFarsi() }}</td>--}}
 {{--                        <td>{{ $user->getCreatedAtInJalali() }}</td>--}}
                         <td>
 {{--                            @if(auth()->user()->id !== $user->id && $user->role !== 'admin')--}}
-                                <a href="#" class="item-delete mlg-15" title="حذف"></a>
+                                <a  href="{{ route('ads.destroy', $ad->id) }}" onclick="destroyPost(event, {{ $ad->id }})" class="item-delete mlg-15" title="حذف"></a>
 {{--                            @endif--}}
-                            <a href="#" class="item-edit " title="ویرایش"></a>
-                            <form action="#" method="post" id="destroy-user-{{ $employer->id }}">
+                            <a href="{{ route('ads.edit', ['ad' => $ad->id]) }}" class="item-edit " title="ویرایش"></a>
+                            <form action="{{ route('ads.destroy', ['ad' => $ad->id]) }}" method="post" id="destroy-user-{{ $ad->id }}">
                                 @csrf
                                 @method('delete')
                             </form>
@@ -45,7 +39,17 @@
                 @endforeach
                 </tbody>
             </table>
-            {{-- {{ $users->links() }} --}}
+            {{ $ads->appends(request()->query())->links() }}
         </div>
     </div>
+@endsection
+
+
+@section('script')
+    <script>
+        function destroyPost(event, id) {
+            event.preventDefault();
+            document.getElementById('destroy-user-' + id).submit();
+        }
+    </script>
 @endsection

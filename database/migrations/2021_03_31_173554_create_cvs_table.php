@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployersTable extends Migration
+class CreateCvsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateEmployersTable extends Migration
      */
     public function up()
     {
-        Schema::create('employers', function (Blueprint $table) {
+        Schema::create('cvs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company_name');
-            $table->integer('count')->default('10');
-            $table->string('city_id')->default('23');
-            $table->string('category_id')->default('14');
-            $table->string('site')->default('http://webgaran.ir');
-            $table->unsignedInteger('user_id');
+            $table->boolean('sex')->default(false);
+            $table->boolean('is_married')->default(false);
+            $table->string('born')->default('1367');
+            $table->integer('category_id')->nullable();
+            $table->integer('city_id')->nullable();
+            $table->unsignedInteger('user_id')->default(1);
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ class CreateEmployersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employers');
+        Schema::dropIfExists('cvs');
     }
 }

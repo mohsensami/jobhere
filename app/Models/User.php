@@ -19,7 +19,9 @@ class User extends Authenticatable
     protected $fillable = [
         'full_name',
         'email',
+        'phone',
         'password',
+        'avatar'
     ];
 
     /**
@@ -40,4 +42,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getProfileUrl()
+    {
+        return storage_path('images/users/' . $this->avatar);
+    }
 }

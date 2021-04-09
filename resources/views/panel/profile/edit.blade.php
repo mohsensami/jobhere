@@ -5,7 +5,7 @@
 @include('panel.layouts.header')
 <div class="main-content">
   <div class="user-info bg-white padding-30 font-size-13">
-    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('profile.update', ['id'=>2]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="profile__info border cursor-pointer text-center">
@@ -20,13 +20,13 @@
               <p class="error">{{ $message }}</p>
             @enderror
         </div>
-        <input class="text" type="text" name="name" placeholder="نام کاربری" value="{{ Auth::user()->full_name }}">
-        @error('name')
+        <input class="text" type="text" name="full_name" placeholder="نام کاربری" value="{{ Auth::user()->full_name }}">
+        @error('full_name')
           <p class="error">{{ $message }}</p>
         @enderror
 
-        <input class="text" type="text" name="mobile" placeholder="شماره تلفن" value="{{ Auth::user()->phone }}">
-        @error('mobile')
+        <input class="text" type="text" name="phone" placeholder="شماره تلفن" value="{{ Auth::user()->phone }}">
+        @error('phone')
           <p class="error">{{ $message }}</p>
         @enderror
 

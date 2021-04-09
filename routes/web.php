@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Panel\AdController;
+use App\Http\Controllers\Panel\CvController;
 use App\Http\Controllers\Panel\EmployerController;
 use App\Http\Controllers\Panel\UserController;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/' , function () {
    return 'Home';
 });
@@ -27,10 +29,12 @@ Route::middleware('auth')->group(function(){
 
 
 
-Route::get('/profile', [UserController::class, 'index'])->name('panel.profile');
+Route::get('/profile', [UserController::class, 'edit'])->name('panel.profile');
 Route::put('/profile', [UserController::class, 'update'])->name('profile.update');
 
-Route::get('/employers', [EmployerController::class, 'index'])->name('panel.employers');
-Auth::routes();
+Route::middleware(['admin','auth'])->get('/employers', [EmployerController::class, 'index'])->name('panel.employers');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware('auth')->resource('/panel/ads', AdController::class);
+
+Route::resource('/panel/cvs', CvController::class);
