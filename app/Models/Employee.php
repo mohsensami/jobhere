@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cv extends Model
+class Employee extends Model
 {
     use HasFactory;
-    public function employee()
+    public function cv()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->hasOne(Cv::class);
     }
 }

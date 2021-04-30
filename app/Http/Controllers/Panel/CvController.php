@@ -58,7 +58,7 @@ class CvController extends Controller
      */
     public function edit(Cv $cv)
     {
-        dd('fgdgd');
+        return view('panel.cvs.edit', ['cv' => $cv]);
     }
 
     /**

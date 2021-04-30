@@ -25,20 +25,24 @@
                         @csrf
                         <div>
                             <label for="title">عنوان موقعیت شغلی</label>
-                            <select class="text" name="category" id="category">
-                                <optgroup label="دستمزد">
+                            <input class="text" type="text" name="title" id="title">
+                        </div>
+                        <div>
+                            <label for="category">دسته بندی</label>
+                            <select class="text" name="category_id" id="category">
+                                <optgroup label="دسته بندی">
                                     @foreach ($categories as $category)
-                                        <option value="1">{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </optgroup>
                             </select>
                         </div>
                         <div>
-                            <label for="mode">شهر</label>
-                            <select class="text" name="city" id="city">
+                            <label for="city">شهر</label>
+                            <select class="text" name="city_id" id="city">
                                 <optgroup label="انتخاب شهر">
                                     @foreach ($cities as $city)
-                                        <option value="1">{{ $city->name }}</option>
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
                                     @endforeach
                                 </optgroup>
                             </select>

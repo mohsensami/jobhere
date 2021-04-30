@@ -9,8 +9,8 @@
         @csrf
         @method('PUT')
         <div class="profile__info border cursor-pointer text-center">
-            <div class="avatar__img"><img src="#" class="avatar___img">
-                <input type="file" name="profile" accept="image/*" class="hidden avatar-img__input">
+            <div class="avatar__img"><img src="{{ Auth::user()->getProfileUrl() }}" class="avatar___img">
+                <input type="file" name="avatar" accept="image/*" class="hidden avatar-img__input">
                 <div class="v-dialog__container" style="display: block;"></div>
                 <div class="box__camera default__avatar"></div>
             </div>

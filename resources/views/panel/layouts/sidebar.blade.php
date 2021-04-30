@@ -13,6 +13,6 @@
     <li class="item-li i-dashboard {{ Request::is('dashboard*') ? 'is-active' : '' }}"><a href="{{ route('panel.dashboard') }}">پیشخوان</a></li>
     <li class="item-li i-dashboard {{ Request::is('employers*') ? 'is-active' : '' }}"><a href="{{ route('panel.employers') }}">کارفرماها</a></li>
     <li class="item-li i-dashboard {{ Request::is('*ads*') ? 'is-active' : '' }}"><a href="{{ route('ads.index') }}">آگهی ها</a></li>
-    <li class="item-li i-dashboard"><a href="{{ route('cvs.edit',['cv'=>Auth::user()->id]) }}">رزومه ساز</a></li>
+    <li class="item-li i-dashboard {{ Request::is('*cvs*') ? 'is-active' : '' }}""><a href="{{ route('cvs.edit',['cv'=>Auth::user()->id]) }}">رزومه ساز</a></li>
     <li class="item-li i-user__inforamtion {{ Request::is('profile*') ? 'is-active' : '' }}"><a href="{{ route('panel.profile') }}">اطلاعات کاربری</a></li>
 </ul>

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Ad extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content','employer_id'];
+    protected $guarded= ['files'];
 }

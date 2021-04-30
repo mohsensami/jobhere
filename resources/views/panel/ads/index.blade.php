@@ -12,10 +12,14 @@
         <div class="d-flex flex-space-between item-center flex-wrap padding-30 border-radius-3 bg-white">
         </div>
         <div class="bg-white table__box">
+            @if ( session('status') )
+            <p class="alert alert-success">{{ session('status') }}</p>
+            @endif
             <table class="table">
                 <thead role="rowgroup">
                 <tr role="row" class="title-row">
                     <th>عنوان آگهی</th>
+                    <th>منتشر شده در</th>
                     <th>عملیات</th>
                 </tr>
                 </thead>
@@ -23,6 +27,7 @@
                 @foreach($ads as $ad)
                     <tr role="row" class="">
                         <td>{{ $ad->title }}</td>
+                        <td></td>
 {{--                        <td>{{ $user->getRoleInFarsi() }}</td>--}}
 {{--                        <td>{{ $user->getCreatedAtInJalali() }}</td>--}}
                         <td>
@@ -39,7 +44,7 @@
                 @endforeach
                 </tbody>
             </table>
-            {{ $ads->appends(request()->query())->links() }}
+           
         </div>
     </div>
 @endsection

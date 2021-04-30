@@ -16,9 +16,9 @@
                 <thead role="rowgroup">
                 <tr role="row" class="title-row">
                     <th>شناسه</th>
-                    <th>نام و نام خانوادگی</th>
-                    <th>ایمیل</th>
-                    <th>موبایل</th>
+                    <th>نام شرکت</th>
+                    <th>شهر</th>
+                    <th>سایت</th>
                     <th>عملیات</th>
                 </tr>
                 </thead>
@@ -26,9 +26,9 @@
                 @foreach($employers as $employer)
                     <tr role="row" class="">
                         <td>{{ $employer->id }}</td>
-                        <td>{{ $employer->company_name }}</td>
-                        <td>{{ $employer->user->email }}</td>
-                        <td>{{ $employer->user->phone }}</td>
+                        <td>{{ $employer->company_name_en }}</td>
+                        <td>{{ $employer->city->name }}</td>
+                        <td><a target="_blank" href="{{ $employer->site }}">{{ $employer->site }}</a></td>
 {{--                        <td>{{ $user->getRoleInFarsi() }}</td>--}}
 {{--                        <td>{{ $user->getCreatedAtInJalali() }}</td>--}}
                         <td>

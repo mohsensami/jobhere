@@ -15,13 +15,10 @@ class CreateCvsTable extends Migration
     {
         Schema::create('cvs', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('sex')->default(false);
-            $table->boolean('is_married')->default(false);
-            $table->string('born')->default('1367');
             $table->integer('category_id')->nullable();
             $table->integer('city_id')->nullable();
-            $table->unsignedInteger('user_id')->default(1);
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('pdf')->default('/pdf/resume.pdf');
+            $table->unsignedInteger('employee_id')->default(1);
             $table->timestamps();
         });
     }

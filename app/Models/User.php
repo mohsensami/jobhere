@@ -47,4 +47,5 @@ class User extends Authenticatable
     {
         return storage_path('images/users/' . $this->avatar);
     }
+
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\Panel\AdController;
 use App\Http\Controllers\Panel\CvController;
 use App\Http\Controllers\Panel\EmployerController;
 use App\Http\Controllers\Panel\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Auth::routes();
 Auth::routes();
 Route::get('/' , function () {
-   return 'Home';
+   return view('master');
 });
 
 Route::middleware('auth')->group(function(){

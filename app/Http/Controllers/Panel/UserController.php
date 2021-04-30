@@ -24,15 +24,15 @@ class UserController extends Controller
             unset($data['password']);
         }
 
-        if ($request->hasFile('profile')) {
+        if ($request->hasFile('avatar')) {
             
-            $file = $request->file('profile');
+            $file = $request->file('avatar');
             $ext = $file->getClientOriginalExtension();
 
             $file_name = auth()->user()->id . '_' . time() . '.' . $ext;
             $file->storeAs('images/users', $file_name);
 
-            $data['profile'] = $file_name;
+            $data['avatar'] = $file_name;
         }
 
 

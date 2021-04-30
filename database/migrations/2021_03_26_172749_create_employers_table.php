@@ -15,13 +15,15 @@ class CreateEmployersTable extends Migration
     {
         Schema::create('employers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company_name');
+            $table->string('company_name_fa');
+            $table->string('company_name_en');
             $table->integer('count')->default('10');
+            $table->string('logo')->default('/logo/logo.jpg');
+            $table->integer('build')->default('1395');
             $table->string('city_id')->default('23');
             $table->string('category_id')->default('14');
             $table->string('site')->default('http://webgaran.ir');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('user_id')->default('2');
             $table->timestamps();
         });
     }

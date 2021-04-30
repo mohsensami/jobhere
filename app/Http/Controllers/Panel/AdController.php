@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Ad;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdController extends Controller
 {
     public function index()
     {
-        return view('panel.ads.index', ['ads'=>Ad::paginate(10),]);
+        $id = Auth::user()->id;
+        return view('panel.ads.index', ['ads'=>Ad::where('employer_id', $id)->get()]);
     }
     public function create()
     {
@@ -24,9 +26,9 @@ class AdController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        dd($data);
         $data['employer_id'] = 1;
         Ad::create($data);
+        $request->session()->flash('status', 'آگهی شما با موفقیت درج شد!');
         return redirect()->route('ads.index');
     }
     public function show($id)

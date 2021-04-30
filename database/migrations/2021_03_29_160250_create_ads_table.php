@@ -19,9 +19,11 @@ class CreateAdsTable extends Migration
             $table->boolean('sex')->default(false);
             $table->string('mode')->default('full_time');
             $table->string('salary')->nullable();
+            $table->unsignedInteger('city_id')->nullable();
+            $table->unsignedInteger('category_id')->nullable();
+            $table->unsignedInteger('employer_id');
+            $table->text('desc');
             $table->text('content');
-            $table->unsignedInteger('employer_id')->index();
-            $table->foreign('employer_id')->references('id')->on('employers');
             $table->timestamps();
         });
     }
